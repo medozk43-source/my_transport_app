@@ -1,0 +1,31 @@
+workflows:
+  android-release:
+    name: بناء تطبيق أندرويد
+    max_build_duration: 30
+    environment:
+      flutter: stable
+    scripts:
+      # الخطوة 1: توليد ملفات أندرويد الأساسية تلقائياً (لأن مجلد android غير مرفوع في المستودع)
+      - name: توليد مشروع أندرويد
+        script: |
+          flutter create --platforms=android --org com.moodapp .
+
+      # الخطوة 2: تغيير اسم التطبيق الذي يظهر تحت الأيقونة في هاتفك
+      - name: تعيين اسم التطبيق
+        script: |
+          sed -i 's/android:label="[^"]*"/android:label="My month"/' android/app/src/main/AndroidManifest.xml
+
+      # الخطوة 3: تثبيت كل الحزم المطلوبة
+      - name: تثبيت الحزم
+        script: flutter pub get
+
+      # الخطوة 4: توليد أيقونة التطبيق من ملف icon.png الموجود في جذر المشروع
+      - name: توليد الأيقونة
+        script: flutter pub run flutter_launcher_icons
+
+      # الخطوة 5: بناء ملف APK النهائي بصيغة Release
+      - name: بناء APK
+        script: flutter build apk --release
+
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
