@@ -1,0 +1,35 @@
+name: transport_tracker
+description: تطبيق تتبع أماكن العمل وحساب بدلات المواصلات اليومية
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # قاعدة بيانات محلية خفيفة وسريعة لتخزين بيانات كل يوم
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+
+# إعدادات أيقونة التطبيق: ضع صورتك باسم icon.png في جذر المشروع (نفس مكان هذا الملف)
+# ومقاسها المفضل 1024×1024 بكسل، مربعة الشكل.
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "icon.png"
