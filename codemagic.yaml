@@ -13,7 +13,7 @@ workflows:
       # الخطوة 2: تغيير اسم التطبيق الذي يظهر تحت الأيقونة في هاتفك
       - name: تعيين اسم التطبيق
         script: |
-          sed -i 's/android:label="[^"]*"/android:label="My month"/' android/app/src/main/AndroidManifest.xml
+          sed -i.bak 's/android:label="[^"]*"/android:label="My month"/' android/app/src/main/AndroidManifest.xml
 
       # الخطوة 3: تثبيت كل الحزم المطلوبة
       - name: تثبيت الحزم
